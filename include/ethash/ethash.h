@@ -151,6 +151,10 @@ ethash_errc ethash_verify_against_boundary(const struct ethash_epoch_context* co
     const union ethash_hash256* header_hash, const union ethash_hash256* mix_hash, uint64_t nonce,
     const union ethash_hash256* boundary) noexcept;
 
+ethash_errc ethash_verify_against_boundary_simple(const struct ethash_epoch_context* context,
+    const union ethash_hash256* header_hash, uint64_t nonce,
+    const union ethash_hash256* boundary) noexcept;
+
 /**
  * Verify Ethash validity of a header hash against given difficulty.
  *
@@ -169,6 +173,10 @@ ethash_errc ethash_verify_against_boundary(const struct ethash_epoch_context* co
  */
 ethash_errc ethash_verify_against_difficulty(const struct ethash_epoch_context* context,
     const union ethash_hash256* header_hash, const union ethash_hash256* mix_hash, uint64_t nonce,
+    const union ethash_hash256* difficulty) noexcept;
+
+ethash_errc ethash_verify_against_difficulty_simple(const struct ethash_epoch_context* context,
+    const union ethash_hash256* header_hash, uint64_t nonce,
     const union ethash_hash256* difficulty) noexcept;
 
 
