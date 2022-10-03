@@ -190,6 +190,9 @@ ethash_errc ethash_verify_final_hash_against_difficulty(const union ethash_hash2
     const union ethash_hash256* mix_hash, uint64_t nonce,
     const union ethash_hash256* difficulty) noexcept;
 
+ethash_errc ethash_verify_final_hash_against_difficulty(const epoch_context* context,
+    const hash256* header_hash, uint64_t nonce, const hash256* difficulty) noexcept;
+
 #ifdef __cplusplus
 }
 #endif
