@@ -480,18 +480,6 @@ ethash_errc ethash_verify_final_hash_against_difficulty(const hash256* header_ha
                ETHASH_INVALID_FINAL_HASH;
 }
 
-ethash_errc ethash_verify_final_hash_against_difficulty(const epoch_context* context,
-    const hash256* header_hash, uint64_t nonce, const hash256* difficulty) noexcept
-{
-    const hash512 seed = hash_seed(*header_hash, nonce);
-    const hash256 mix_hash = hash_kernel(*context, seed, calculate_dataset_item_1024);
-
-    return check_against_difficulty(
-               hash_final(hash_seed(*header_hash, nonce), mix_hash), *difficulty) ?
-               ETHASH_SUCCESS :
-               ETHASH_INVALID_FINAL_HASH;
-}
-
 ethash_errc ethash_verify_against_boundary(const epoch_context* context, const hash256* header_hash,
     const hash256* mix_hash, uint64_t nonce, const hash256* boundary) noexcept
 {
